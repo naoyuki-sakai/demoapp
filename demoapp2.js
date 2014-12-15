@@ -29,7 +29,7 @@ ZGN(function() {
         // 共通カソードの場合次の行を無効に
         ratio = 1.0 - ratio;
         term.gpio.pwmWrite(pin1, ratio, function () {
-        	console.log('PWM: ' + ratio);
+        	console.log('PWM1: ' + ratio);
         });
     };
     var sliderHandler2 = function(e, ui){
@@ -37,7 +37,7 @@ ZGN(function() {
         // 共通カソードの場合次の行を無効に
         ratio = 1.0 - ratio;
         term.gpio.pwmWrite(pin2, ratio, function () {
-        	console.log('PWM: ' + ratio);
+        	console.log('PWM2: ' + ratio);
         });
     };
     var sliderHandler3 = function(e, ui){
@@ -49,7 +49,7 @@ ZGN(function() {
         	ratio = 1.0;
         }
         term.gpio.pwmWrite(pin3, ratio, function () {
-        	console.log('PWM: ' + ratio);
+        	console.log('PWM3: ' + ratio);
         });
     };
 
