@@ -5,6 +5,8 @@ var sliderValue = 0;
 
 ZGN(function() {
 
+	initialize();
+
 	var term = ZGN.term(1);
 	
 	var pin1 = '25';
