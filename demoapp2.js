@@ -14,10 +14,10 @@ ZGN(function() {
 	var term = ZGN.term(1);
 	
 	var pin1 = '19';
-	term.gpio.pinMode(pin1, ZGN.PWM);
+	term.gpio.pinMode(pin1, ZGN.PWM_OUTPUT);
 	
 	var pin2 = '18';
-	term.gpio.pinMode(pin2, ZGN.PWM);
+	term.gpio.pinMode(pin2, ZGN.PWM_OUTPUT);
 	
 	var pin3 = '23';
 	term.gpio.pinMode(pin3, ZGN.OUTPUT);
