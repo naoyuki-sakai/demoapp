@@ -13,6 +13,4 @@ ZGN(function() {
     $(document).on('click', '#off', function() {
         term.gpio.digitalWrite(pinNo, ZGN.LOW);
     });
-    
-    console.log("hello");
 });
