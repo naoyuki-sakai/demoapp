@@ -81,5 +81,7 @@ function applyCustomCss(custom_css){
 
 function initialize(){
     applyCustomCss('styles.css');
+    
+    console.log("applied styles.css");
 }
 
