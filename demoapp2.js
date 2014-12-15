@@ -4,6 +4,10 @@ var sliderStep = 1;
 var sliderValue = 0;
 
 ZGN(function() {
+	var sliderMin = 0;
+	var sliderMax = 20;
+	var sliderStep = 1;
+	var sliderValue = 0;
 
 	initialize();
 
