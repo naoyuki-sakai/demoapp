@@ -20,7 +20,7 @@ ZGN(function() {
 	term.gpio.pinMode(pin2, ZGN.PWM_OUTPUT);
 	
 	var pin3 = '23';
-	term.gpio.pinMode(pin3, ZGN.OUTPUT);
+	term.gpio.pinMode(pin3, ZGN.PWM_OUTPUT);
 	
 	
     // スライダを動かしたときに呼ばれるイベントハンドラの設定
@@ -43,11 +43,7 @@ ZGN(function() {
     var sliderHandler3 = function(e, ui){
         var ratio = ui.value/sliderMax;
         // 共通カソードの場合次の行を無効に
-        if ( ratio < 0.5 ) {
-        	ratio = 0.0;
-        } else {
-        	ratio = 1.0;
-        }
+        ratio = 1.0 - ratio;
         term.gpio.pwmWrite(pin3, ratio, function () {
         	console.log('PWM3: ' + ratio);
         });
