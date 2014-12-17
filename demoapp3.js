@@ -29,16 +29,16 @@ ZGN(function() {
 	// ターミナル取得
 	var term = ZGN.term(1);
 	
-	term.gpio.pinMode(25, ZGN.OUTPUT);
-	term.gpio.pinMode(24, ZGN.OUTPUT);
-	term.gpio.pinMode(23, ZGN.OUTPUT);
-	term.gpio.pinMode(22, ZGN.OUTPUT);
+	term.gpio.pinMode('25', ZGN.OUTPUT);
+	term.gpio.pinMode('24', ZGN.OUTPUT);
+	term.gpio.pinMode('23', ZGN.OUTPUT);
+	term.gpio.pinMode('26', ZGN.OUTPUT);
 
 	function modPinValue(rate25, rate24, rate23, rate22) {
 		term.gpio.digitalWrite('25', rate25);
 		term.gpio.digitalWrite('24', rate24);
 		term.gpio.digitalWrite('23', rate23);
-		term.gpio.digitalWrite('22', rate22);
+		term.gpio.digitalWrite('26', rate22);
 		
 		rate25Prev = rate25;
 		rate24Prev = rate24;
