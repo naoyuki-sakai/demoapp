@@ -14,13 +14,13 @@ ZGN(function() {
 	var term = ZGN.term(1);
 	
 	var pin1 = '2';
-	term.gpio.pinMode(pin1, ZGN.PWM_OUTPUT);
+	term.gpio.pinMode(pin1, ZGN.PWM);
 	
 	var pin2 = '3';
-	term.gpio.pinMode(pin2, ZGN.PWM_OUTPUT);
+	term.gpio.pinMode(pin2, ZGN.PWM);
 	
 	var pin3 = '4';
-	term.gpio.pinMode(pin3, ZGN.PWM_OUTPUT);
+	term.gpio.pinMode(pin3, ZGN.PWM);
 	
 	
     // スライダを動かしたときに呼ばれるイベントハンドラの設定
