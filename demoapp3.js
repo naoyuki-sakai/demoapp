@@ -42,10 +42,10 @@ ZGN(function() {
 	term.gpio.pinMode(22, ZGN.PWM);
 
 	function modPinValue(rate25, rate24, rate23, rate23) {
-		term.gpio.pwmWrite(25, rate25, function(e, ui) {}
-		term.gpio.pwmWrite(24, rate24, function(e, ui) {}
-		term.gpio.pwmWrite(23, rate23, function(e, ui) {}
-		term.gpio.pwmWrite(22, rate22, function(e, ui) {}
+		term.gpio.pwmWrite(25, rate25, function(e, ui) {});
+		term.gpio.pwmWrite(24, rate24, function(e, ui) {});
+		term.gpio.pwmWrite(23, rate23, function(e, ui) {});
+		term.gpio.pwmWrite(22, rate22, function(e, ui) {});
 		
 		rate25Prev = rate25;
 		rate24Prev = rate24;
