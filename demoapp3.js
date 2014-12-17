@@ -40,10 +40,10 @@ ZGN(function() {
 		term.gpio.digitalWrite('23', rate23);
 		term.gpio.digitalWrite('26', rate22);
 		
-		rate25Prev = rate25;
-		rate24Prev = rate24;
-		rate23Prev = rate23;
-		rate22Prev = rate22;
+		//rate25Prev = rate25;
+		//rate24Prev = rate24;
+		//rate23Prev = rate23;
+		//rate22Prev = rate22;
 	}
 	
 	function touchEvent(e){
