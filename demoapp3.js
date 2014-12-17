@@ -1,9 +1,3 @@
-function initialize(){
-    
-    
-
-
-}
 
 // 前に送信したデューティー比を覚えておく
 var rate25Prev = 0;
