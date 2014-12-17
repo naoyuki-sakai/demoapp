@@ -34,7 +34,7 @@ ZGN(function() {
 	term.gpio.pinMode(23, ZGN.OUTPUT);
 	term.gpio.pinMode(22, ZGN.OUTPUT);
 
-	function modPinValue(rate25, rate24, rate23, rate23) {
+	function modPinValue(rate25, rate24, rate23, rate22) {
 		term.gpio.digitalWrite(25, rate25);
 		term.gpio.digitalWrite(24, rate24);
 		term.gpio.digitalWrite(23, rate23);
