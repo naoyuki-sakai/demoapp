@@ -13,8 +13,19 @@ var commandID = 0;
 
 ZGN(function() {
 	// zugyuuunの準備が終わってからstyles.cssを適用する
-	applyCustomCss('styles3.css');
+	applyCustomCss('styles3.css');	
+
+	// ターミナル取得
+	var term = ZGN.term(1);
 	
+	term.gpio.pinMode('25', ZGN.OUTPUT);
+	term.gpio.pinMode('24', ZGN.OUTPUT);
+	term.gpio.pinMode('23', ZGN.OUTPUT);
+	term.gpio.pinMode('26', ZGN.OUTPUT);
+	
+	// まずモーターを止める
+	modPinValue(0, 0, 0, 0);
+
     // タッチエリアの設定
     var touchArea = $("#touchArea")[0];
 
@@ -26,19 +37,31 @@ ZGN(function() {
     // クリックイベントのイベントリスナーの登録
     touchArea.addEventListener("click", clickEvent, false);	
 	
-	// ターミナル取得
-	var term = ZGN.term(1);
-	
-	term.gpio.pinMode('25', ZGN.OUTPUT);
-	term.gpio.pinMode('24', ZGN.OUTPUT);
-	term.gpio.pinMode('23', ZGN.OUTPUT);
-	term.gpio.pinMode('26', ZGN.OUTPUT);
 
 	function modPinValue(rate25, rate24, rate23, rate22) {
-		term.gpio.digitalWrite('25', rate25);
-		term.gpio.digitalWrite('24', rate24);
-		term.gpio.digitalWrite('23', rate23);
-		term.gpio.digitalWrite('26', rate22);
+		if ( rate25 < 0.5 ) {
+			term.gpio.digitalWrite('25', ZGN.LOW);
+		} else {
+			term.gpio.digitalWrite('25', ZGN.HIGH);
+		}
+
+		if ( rate24 < 0.5 ) {
+			term.gpio.digitalWrite('24', ZGN.LOW);
+		} else {
+			term.gpio.digitalWrite('24', ZGN.HIGH);
+		}
+
+		if ( rate23 < 0.5 ) {
+			term.gpio.digitalWrite('23', ZGN.LOW);
+		} else {
+			term.gpio.digitalWrite('23', ZGN.HIGH);
+		}
+		
+		if ( rate22 < 0.5 ) {
+			term.gpio.digitalWrite('26', ZGN.LOW);
+		} else {
+			term.gpio.digitalWrite('26', ZGN.HIGH);
+		}
 		
 		//rate25Prev = rate25;
 		//rate24Prev = rate24;
