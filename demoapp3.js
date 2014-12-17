@@ -52,6 +52,7 @@ ZGN(function() {
 		rate23Prev = rate23;
 		rate22Prev = rate22;
 	}
+	
 	function touchEvent(e){
 	    e.preventDefault();
 
@@ -160,14 +161,16 @@ ZGN(function() {
 
 	}	
 
+	function applyCustomCss(custom_css){
+	    var head = document.getElementsByTagName('head')[0];
+	    var style = document.createElement('link');
+	    style.rel = "stylesheet";
+	    style.type = 'text/css';
+	    style.href = custom_css;
+	    head.appendChild(style);
+	}
+
 }
 
 
-function applyCustomCss(custom_css){
-    var head = document.getElementsByTagName('head')[0];
-    var style = document.createElement('link');
-    style.rel = "stylesheet";
-    style.type = 'text/css';
-    style.href = custom_css;
-    head.appendChild(style);
-}
+
