@@ -2,7 +2,7 @@ ZGN(function() {
 
     var term = ZGN.term(1);
 
-    var pinNo = '21';
+    var pinNo = '22';
 
     term.gpio.pinMode(pinNo, ZGN.OUTPUT);
 
