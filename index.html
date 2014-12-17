@@ -3,39 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>3 - RGBフルカラーLEDの制御</title>
-<!-- jQuery UI -->
-
-<!--
-<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
--->
-
-<link rel="stylesheet" href="RGB_LED_js/jquery-ui.css">
-<script src="RGB_LED_js/jquery-1.11.0.min.js"></script>
-<script src="RGB_LED_js/jquery-ui.min.js"></script>
-<script src="RGB_LED_js/jquery.ui.touch-punch.min.js"></script>
-
-
-<!-- demoapp2 js -->
-<script src="https://cdn.zugyuuun.com/libs/0.9.0/zgn.js"></script>
-<script src="demoapp2.js"></script>
-
+<title>5 - クローラーの操作</title>
+<script src="demoapp3.js"></script>
 </head>
 <body>
-<p>スクロールバーを調整することで、RGBフルカラーLEDの色が変わります。</p>
 
-<p>それぞれのスクロールバーが赤、青、緑の何色に対応するかは用いるRGBフルカラーLEDの種類によって異なります。</p>
-
-<div align="center">
-    <div id="text1">色 1</div>
-    <div id="slider1"></div>
-    <div id="text2">色 2</div>
-    <div id="slider2"></div>
-    <div id="text3">色 3</div>
-    <div id="slider3"></div>
+<div id="touchArea" align="center">
+    <img src="img/CrawlerController.png" id="touchImage">
 </div>
+
+<p>android、iPhone、iPadの場合: タッチしている間だけモーターは回転し、タッチを離すと静止します。</p>
+
+<p>Windowsタブレットや通常のPCの場合: タッチ位置やマウスをクリックした位置により、モーターが回転を開始します。中央付近をタッチかクリックしないとモーターは止まりません。</p>
 
 </body>
 </html>
