@@ -163,7 +163,7 @@ ZGN(function() {
 	    head.appendChild(style);
 	}
 
-)}
+})
 
 
 
