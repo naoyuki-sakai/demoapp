@@ -18,10 +18,10 @@ ZGN(function() {
 	// ターミナル取得
 	var term = ZGN.term(1);
 	
-	term.gpio.pinMode('25', ZGN.OUTPUT);
-	term.gpio.pinMode('24', ZGN.OUTPUT);
-	term.gpio.pinMode('23', ZGN.OUTPUT);
-	term.gpio.pinMode('26', ZGN.OUTPUT);
+	term.gpio.pinMode('19', ZGN.PWM);
+	term.gpio.pinMode('18', ZGN.PWM);
+	term.gpio.pinMode('13', ZGN.PWM);
+	term.gpio.pinMode('12', ZGN.PWM);
 	
 	// まずモーターを止める
 	modPinValue(0, 0, 0, 0);
@@ -39,34 +39,23 @@ ZGN(function() {
 	
 
 	function modPinValue(rate25, rate24, rate23, rate22) {
-		if ( rate25 < 0.5 ) {
-			term.gpio.digitalWrite('25', ZGN.LOW);
-		} else {
-			term.gpio.digitalWrite('25', ZGN.HIGH);
-		}
-
-		if ( rate24 < 0.5 ) {
-			term.gpio.digitalWrite('24', ZGN.LOW);
-		} else {
-			term.gpio.digitalWrite('24', ZGN.HIGH);
-		}
-
-		if ( rate23 < 0.5 ) {
-			term.gpio.digitalWrite('23', ZGN.LOW);
-		} else {
-			term.gpio.digitalWrite('23', ZGN.HIGH);
-		}
-		
-		if ( rate22 < 0.5 ) {
-			term.gpio.digitalWrite('26', ZGN.LOW);
-		} else {
-			term.gpio.digitalWrite('26', ZGN.HIGH);
-		}
-		
-		//rate25Prev = rate25;
-		//rate24Prev = rate24;
-		//rate23Prev = rate23;
-		//rate22Prev = rate22;
+		term.gpio.pwmWrite('19', rate25, function() {
+			console.log("pin 19 PWM: " + rate25);
+		});
+		term.gpio.pwmWrite('18', rate24, function() {
+			console.log("pin 18 PWM: " + rate24);
+		});
+		term.gpio.pwmWrite('13', rate23, function() {
+			console.log("pin 13 PWM: " + rate23);
+		});
+		term.gpio.pwmWrite('12', rate22, function() {
+			console.log("pin 12 PWM: " + rate22);
+		});
+				
+		rate25Prev = rate25;
+		rate24Prev = rate24;
+		rate23Prev = rate23;
+		rate22Prev = rate22;
 	}
 	
 	function touchEvent(e){
@@ -77,19 +66,19 @@ ZGN(function() {
 	    var height = document.getElementById("touchArea").offsetHeight;
 
 	    if(touch.pageX<width/3){ // 左旋回
-	        //var rate = maxSpeed*(width/3-touch.pageX)/(width/3);
+	        var rate = maxSpeed*(width/3-touch.pageX)/(width/3);
 
-	        // 前回送信時と値が大きく違うときのみ送信
-	        //if(Math.abs(rate-rate24Prev)>th || Math.abs(rate-rate23Prev)>th){
-	        	modPinValue(0, 1, 1, 0);
-	        //}
+	        前回送信時と値が大きく違うときのみ送信
+	        if(Math.abs(rate-rate24Prev)>th || Math.abs(rate-rate23Prev)>th){
+	        	modPinValue(0, rate, rate, 0);
+	        }
 	    }else if(touch.pageX<2*width/3){ // 前後移動
 	        // 左右の車輪の速さの違いの補正
 	        //var modL = (1.2-0.8)*(touch.pageX-width/3)/(width/3) + 0.8;
 	        //var modR = (0.8-1.2)*(touch.pageX-width/3)/(width/3) + 1.2;
 
 	        if(touch.pageY<height/2){
-	            //var rate = maxSpeed*(height/2-touch.pageY)/(height/2);
+	            var rate = maxSpeed*(height/2-touch.pageY)/(height/2);
 	            //modL *= rate;
 	            //modR *= rate;
 
@@ -97,11 +86,11 @@ ZGN(function() {
 	            //if(modR > 1.0){ modR = 1.0; }
 
 	            // 前回送信時と値が大きく違うときのみ送信
-	            //if(Math.abs(modL-rate25Prev)>th || Math.abs(modR-rate23Prev)>th){
-	            	modPinValue(1, 0, 1, 0);
-	            //}
+	            if(Math.abs(rate-rate25Prev)>th || Math.abs(rate-rate23Prev)>th){
+	            	modPinValue(rate, 0, rate, 0);
+	            }
 	        }else{
-	            //var rate = maxSpeed*(touch.pageY-height/2)/(height/2);
+	            var rate = maxSpeed*(touch.pageY-height/2)/(height/2);
 	            //modL *= rate;
 	            //modR *= rate;
 
@@ -109,18 +98,18 @@ ZGN(function() {
 	            //if(modR > 1.0){ modR = 1.0; }
 
 	            // 前回送信時と値が大きく違うときのみ送信
-	            //if(Math.abs(modL-rate24Prev)>th || Math.abs(modR-rate22Prev)>th){
-	            	modPinValue(0, 1, 0, 1);
-	            //}
+	            if(Math.abs(modL-rate24Prev)>th || Math.abs(modR-rate22Prev)>th){
+	            	modPinValue(0, rate, 0, rate);
+	            }
 	        }
 
 	    }else{ // 右旋回
-	        //var rate = maxSpeed*(touch.pageX - 2*width/3)/(width/3);
+	        var rate = maxSpeed*(touch.pageX - 2*width/3)/(width/3);
 
 	        // 前回送信時と値が大きく違うときのみ送信
-	        //if(Math.abs(rate-rate25Prev)>th || Math.abs(rate-rate22Prev)>th){
-	        	modPinValue(1, 0, 0, 1);
-	        //}
+	        if(Math.abs(rate-rate25Prev)>th || Math.abs(rate-rate22Prev)>th){
+	        	modPinValue(rate, 0, 0, rate);
+	        }
 	    }
 
 	}
