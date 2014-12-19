@@ -14,13 +14,13 @@ ZGN(function() {
 	var term = ZGN.term(1);
 	
 	var pin1 = '19';
-	term.gpio.pinMode(pin1, ZGN.PWM_OUTPUT);
+	term.gpio.pinMode(pin1, ZGN.PWM);
 	
 	var pin2 = '13';
-	term.gpio.pinMode(pin2, ZGN.PWM_OUTPUT);
+	term.gpio.pinMode(pin2, ZGN.PWM);
 	
 	var pin3 = '12';
-	term.gpio.pinMode(pin3, ZGN.OUTPUT);
+	term.gpio.pinMode(pin3, ZGN.PWM);
 	
 	
     // スライダを動かしたときに呼ばれるイベントハンドラの設定
@@ -43,11 +43,6 @@ ZGN(function() {
     var sliderHandler3 = function(e, ui){
         var ratio = ui.value/sliderMax;
         // 共通カソードの場合次の行を無効に
-        if ( ratio < 0.5 ) {
-        	ratio = 0.0;
-        } else {
-        	ratio = 1.0;
-        }
         term.gpio.pwmWrite(pin3, ratio, function () {
         	console.log('PWM3: ' + ratio);
         });
