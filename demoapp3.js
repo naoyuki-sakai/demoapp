@@ -68,7 +68,7 @@ ZGN(function() {
 	    if(touch.pageX<width/3){ // 左旋回
 	        var rate = maxSpeed*(width/3-touch.pageX)/(width/3);
 
-	        前回送信時と値が大きく違うときのみ送信
+	        // 前回送信時と値が大きく違うときのみ送信
 	        if(Math.abs(rate-rate24Prev)>th || Math.abs(rate-rate23Prev)>th){
 	        	modPinValue(0, rate, rate, 0);
 	        }
@@ -98,7 +98,7 @@ ZGN(function() {
 	            //if(modR > 1.0){ modR = 1.0; }
 
 	            // 前回送信時と値が大きく違うときのみ送信
-	            if(Math.abs(modL-rate24Prev)>th || Math.abs(modR-rate22Prev)>th){
+	            if(Math.abs(rate-rate24Prev)>th || Math.abs(rate-rate22Prev)>th){
 	            	modPinValue(0, rate, 0, rate);
 	            }
 	        }
@@ -128,9 +128,9 @@ ZGN(function() {
 	    var height = document.getElementById("touchArea").offsetHeight;
 
 	    if(e.pageX<width/3){ // 左旋回
-	        //var rate = maxSpeed*(width/3-e.pageX)/(width/3);
+	        var rate = maxSpeed*(width/3-e.pageX)/(width/3);
 
-			modPinValue(0, 1, 1, 0);
+			modPinValue(0, rate, rate, 0);
 	    }else if(e.pageX<2*width/3){ // 前後移動
 	        // 左右の車輪の速さの違いの補正
 	        //var modL = (1.2-0.8)*(e.pageX-width/3)/(width/3) + 0.8;
@@ -139,29 +139,29 @@ ZGN(function() {
 	        if(e.pageY>=2*height/5 && e.pageY<3*height/5){
 	        	modPinValue(0, 0, 0, 0);
 	        }else if(e.pageY<height/2){
-	            //var rate = maxSpeed*(height/2-e.pageY)/(height/2);
+	            var rate = maxSpeed*(height/2-e.pageY)/(height/2);
 	            //modL *= rate;
 	            //modR *= rate;
 
 	            //if(modL > 1.0){ modL = 1.0; }
 	            //if(modR > 1.0){ modR = 1.0; }
 
-				modPinValue(1, 0, 1, 0);
+				modPinValue(rate, 0, rate, 0);
 	        }else{
-	            //var rate = maxSpeed*(e.pageY-height/2)/(height/2);
+	            var rate = maxSpeed*(e.pageY-height/2)/(height/2);
 	            //modL *= rate;
 	            //modR *= rate;
 
 	            //if(modL > 1.0){ modL = 1.0; }
 	            //if(modR > 1.0){ modR = 1.0; }
 
-				modPinValue(0, 1, 0, 1);
+				modPinValue(0, rate, 0, rate);
 	        }
 
 	    }else{ // 右旋回
-	        //var rate = maxSpeed*(e.pageX - 2*width/3)/(width/3);
+	        var rate = maxSpeed*(e.pageX - 2*width/3)/(width/3);
 
-			modPinValue(1, 0, 0, 1);
+			modPinValue(rate, 0, 0, rate);
 	    }
 
 	}	
