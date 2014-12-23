@@ -18,10 +18,12 @@ ZGN(function() {
 	// ターミナル取得
 	var term = ZGN.term(1);
 	
-	//term.gpio.pinMode('19', ZGN.PWM);
-	//term.gpio.pinMode('18', ZGN.PWM);
-	//term.gpio.pinMode('13', ZGN.PWM);
-	//term.gpio.pinMode('12', ZGN.PWM);
+	/**
+	term.gpio.pinMode('19', ZGN.PWM);
+	term.gpio.pinMode('18', ZGN.PWM);
+	term.gpio.pinMode('13', ZGN.PWM);
+	term.gpio.pinMode('12', ZGN.PWM);
+	*/
 	
 	term.gpio.pinMode('19', ZGN.OUTPUT);
 	term.gpio.pinMode('18', ZGN.OUTPUT);
@@ -44,7 +46,8 @@ ZGN(function() {
 	
 
 	function modPinValue(rate25, rate24, rate23, rate22) {
-		<!--
+		
+		/**
 		term.gpio.pwmWrite('19', rate25, function() {
 			console.log("pin 19 PWM: " + rate25);
 		});
@@ -57,12 +60,44 @@ ZGN(function() {
 		term.gpio.pwmWrite('12', rate22, function() {
 			console.log("pin 12 PWM: " + rate22);
 		});
-		--> 
+		*/ 
 		
-		if ( rate25 > 0.4 ) { term.gpio.digitalWrite('19', ZGN.HIGH, function(){});}
-		if ( rate24 > 0.4 ) { term.gpio.digitalWrite('18', ZGN.HIGH, function(){});}
-		if ( rate23 > 0.4 ) { term.gpio.digitalWrite('13', ZGN.HIGH, function(){});}
-		if ( rate22 > 0.4 ) { term.gpio.digitalWrite('12', ZGN.HIGH, function(){});}
+		if ( rate25 > 0.4 ) { 
+			term.gpio.digitalWrite('19', ZGN.HIGH, function(){
+				console.log("pin 19 DIGIT: HIGH");
+			});
+		} else {
+			term.gpio.digitalWrite('19', ZGN.LOW, function(){
+				console.log("pin 19 DIGIT: LOW");
+			});
+		}
+		if ( rate24 > 0.4 ) { 
+			term.gpio.digitalWrite('18', ZGN.HIGH, function(){
+				console.log("pin 18 DIGIT: HIGH");
+			});
+		} else {
+			term.gpio.digitalWrite('18', ZGN.LOW, function(){
+				console.log("pin 18 DIGIT: LOW");
+			});
+		}
+		if ( rate23 > 0.4 ) { 
+			term.gpio.digitalWrite('13', ZGN.HIGH, function(){
+				console.log("pin 13 DIGIT: HIGH");
+			});
+		} else {
+			term.gpio.digitalWrite('13', ZGN.LOW, function(){
+				console.log("pin 13 DIGIT: LOW");
+			});
+		}
+		if ( rate22 > 0.4 ) { 
+			term.gpio.digitalWrite('12', ZGN.HIGH, function(){
+				console.log("pin 12 DIGIT: HIGH");
+			});
+		} else {
+			term.gpio.digitalWrite('12', ZGN.LOW, function(){
+				console.log("pin 12 DIGIT: LOW");
+			});
+		}
 		
 		rate25Prev = rate25;
 		rate24Prev = rate24;
