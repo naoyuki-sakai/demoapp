@@ -18,19 +18,19 @@ ZGN(function() {
 	// ターミナル取得
 	var term = ZGN.term(1);
 	
-
+	/**	
 	term.gpio.pinMode('19', ZGN.PWM);
 	term.gpio.pinMode('18', ZGN.PWM);
 	term.gpio.pinMode('13', ZGN.PWM);
 	term.gpio.pinMode('12', ZGN.PWM);
+	*/
 
 
-	/**	
 	term.gpio.pinMode('19', ZGN.OUTPUT);
 	term.gpio.pinMode('18', ZGN.OUTPUT);
 	term.gpio.pinMode('13', ZGN.OUTPUT);
 	term.gpio.pinMode('12', ZGN.OUTPUT);
-	*/
+
 
 	
 	// まずモーターを止める
@@ -50,7 +50,7 @@ ZGN(function() {
 
 	function modPinValue(rate25, rate24, rate23, rate22) {
 		
-
+		/**
 		term.gpio.pwmWrite('19', rate25, function() {
 			console.log("pin 19 PWM: " + rate25);
 		});
@@ -63,9 +63,9 @@ ZGN(function() {
 		term.gpio.pwmWrite('12', rate22, function() {
 			console.log("pin 12 PWM: " + rate22);
 		});
+		*/ 
 
 
-		/**		
 		if ( rate25 > 0.4 ) { 
 			term.gpio.digitalWrite('19', ZGN.HIGH, function(){
 				console.log("pin 19 DIGIT: HIGH");
@@ -102,8 +102,6 @@ ZGN(function() {
 				console.log("pin 12 DIGIT: LOW");
 			});
 		}
-		*/ 
-
 
 		rate25Prev = rate25;
 		rate24Prev = rate24;
