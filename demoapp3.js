@@ -60,8 +60,8 @@ ZGN(function() {
 		pwmOutput('18', rate);
 	}
 	
-	function digitOutput(pinNo, in){
-		if ( in == 1 ) { 
+	function digitOutput(pinNo, digitIn){
+		if ( digitIn == 1 ) { 
 			term.gpio.digitalWrite(pinNo, ZGN.HIGH, function(){
 				console.log("pin " + pinNo + "DIGIT: HIGH");
 			});
@@ -72,7 +72,7 @@ ZGN(function() {
 		}
 	}
 	
-	function pwmOutput(ninNo, vreff){
+	function pwmOutput(pinNo, vreff){
 		term.gpio.pwmWrite(pinNo, vreff, function() {
 			console.log("pin " + pinNo + " PWM: " + vreff);
 		});
